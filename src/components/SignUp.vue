@@ -5,6 +5,7 @@
         <input type="email" v-model="email" placeholder="Ingresa tu correo">
         <input type="password" v-model="password" placeholder="Ingresa una contraseña">
         <button>Regístrame!</button>
+        <p>Ya tienes una cuenta? <router-link to="/login">Inicia sesión</router-link></p>
     </form>
     </div>
 </template>
@@ -25,6 +26,9 @@ export default {
     signUp () {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then((user) => this.$router.replace('LogIn'), (error) => console.error(error))
+    },
+    returnLogin () {
+      this.$router.replace('login')
     }
   }
 }
