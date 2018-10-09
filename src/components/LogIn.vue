@@ -1,11 +1,12 @@
 <template>
   <div>
-    <form @submit.prevent="login">
+    <form>
       <h2>Ingresa a tu cuenta</h2>
       <input type="email" v-model="email" placeholder="Ingresa tu correo">
       <input type="password" v-model="password" placeholder="Ingresa tu contraseña">
-      <button>Adelante!</button>
+      <button @click="login">Adelante!</button>
       <p>No tienes cuenta? <router-link to="/signup">Regístrate</router-link></p>
+      <v-btn color="success">Success</v-btn>
     </form>
   </div>
 </template>
