@@ -6,12 +6,7 @@
       <input type="password" v-model="password" placeholder="Ingresa tu contraseña">
       <button>Adelante!</button>
       <p>No tienes cuenta? <router-link to="/signup">Regístrate</router-link></p>
-          <v-btn color="info">Info</v-btn>
-
     </form>
-    <!-- <pre>
-      {{ $data }}
-    </pre> -->
   </div>
 </template>
 
