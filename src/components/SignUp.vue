@@ -1,13 +1,17 @@
 <template>
-    <div>
-      <form @submit.prevent="signUp">
-        <h2>Registrarme</h2>
-        <input type="email" v-model="email" placeholder="Ingresa tu correo">
-        <input type="password" v-model="password" placeholder="Ingresa una contraseña">
-        <button>Regístrame!</button>
-        <p>Ya tienes una cuenta? <router-link to="/login">Inicia sesión</router-link></p>
-    </form>
+  <div class="container">
+    <div class="row">
+      <div class="col-">
+        <form>
+          <h2>Registra una cuenta</h2>
+          <input type="email" v-model="email" placeholder="Ingresa tu correo">
+          <input type="password" v-model="password" placeholder="Ingresa una contraseña">
+          <button type="button" class="btn btn-dark" @click="signUp" color="warning">Regístrame!</button>
+          <p>Ya tienes una cuenta? <router-link to="/login">Inicia sesión</router-link></p>
+        </form>
+      </div>
     </div>
+  </div>  
 </template>
 
 <script>

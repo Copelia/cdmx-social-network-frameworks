@@ -1,9 +1,12 @@
 import Vue from 'vue'
-import './plugins/vuetify'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import routes from './router/index'
 import firebase from 'firebase'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// global.$ = $
 
 Vue.config.productionTip = false
 
