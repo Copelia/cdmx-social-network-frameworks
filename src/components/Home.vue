@@ -1,42 +1,79 @@
 <template>
-<v-app>
-  <v-toolbar>
-    <v-toolbar-title>Bike Workshops Network</v-toolbar-title>
-  
-  <v-spacer></v-spacer>
-  <v-toolbar-items>
-    <v-btn flat>
-    <v-icon>
-sentiment_satisfied_alt
-   </v-icon>
-    </v-btn>
-  </v-toolbar-items>
-    </v-toolbar>
-    <p class="lead">¡Comparte y encuentra los talleres mecánicos rifados en la CDMX!</p>
-    <p>{{ msg }}</p>
-    <button v-on:click="logout">Cierra Sesión</button>
-    <!-- <v-btn v-on:click="logout" color="error">Cierra Sesión</v-btn> -->
-
-</v-app>
+  <div>
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">Talleres de Bicicletas</span>
+      <span class="navbar-text">¡Comparte y encuentra los talleres mecánicos para tu bici!</span>
+    </nav>
+    <input type="text" v-model="workshop" @keyup.enter="addWorkshop">
+    <ul>
+      <li v-for="(workshopName, key) in workshops" :key="key">
+        {{workshopName.name}}
+        <button class="btn btn-xs btn-info">Edit</button>
+        <button class="btn btn-xs btn-danger" @click="deleteWorkshop(key)">Delete</button>
+        <input
+          type="text"
+          v-model="editing[key]"
+          @keyup.enter="editWorkshop(key)"
+          class="form-control"
+        >
+      </li>
+    </ul>
+    <button class="btn btn-secondary" v-on:click="logout">Cierra Sesión</button>
+  </div>
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 export default {
-  name: 'Home',
-  data () {
+  name: "Home",
+  data() {
     return {
-      msg: 'Bienvenido/a!'
-    }
+      workshop: null,
+      workshops: [],
+      editing: []
+    };
   },
   methods: {
-    logout () {
-      firebase.auth().signOut().then(() => {
-        this.$router.replace('login')
-      })
+    addWorkshop() {
+      // this.workshops.push(this.workshop)
+      firebase
+        .database()
+        .ref("workshops")
+        .push({ name: this.workshop })
+        .then(data => [console.log(data)])
+        .catch(error => [console.log(error)]);
+    },
+    editWorkshop(key) {
+      firebase
+        .database()
+        .ref("workshops/" + key)
+        .set({
+          name: this.editing[key]
+        });
+      this.editing = [];
+    },
+    deleteWorkshop(key) {
+      firebase
+        .database()
+        .ref("workshops/" + key)
+        .remove();
+    },
+
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.replace("login");
+        });
     }
+  },
+  created () {
+    firebase.database().ref('workshops').on('value', (snapshot) => {
+      this.workshops = snapshot.val()
+    })
   }
-}
+};
 </script>
 
 <style>
