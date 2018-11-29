@@ -4,8 +4,8 @@
       <div class="col-">
         <form @submit.prevent="login">
           <h3>Ingresa a tu cuenta</h3>
-          <input type="email" v-model="email" placeholder="Ingresa tu correo">
-          <input type="password" v-model="password" placeholder="Ingresa tu contraseña">
+          <input type="email" v-model="email" placeholder="Tu correo">
+          <input type="password" v-model="password" placeholder="Tu contraseña">
           <button class="btn btn-warning">Adelante!</button>
           <p>No tienes cuenta? <router-link to="/signup">Regístrate</router-link></p>
         </form>
@@ -40,6 +40,11 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  background-image: url('../assets/bicycle.png');
+  background-position: initial;
+  height: 100vh;
+}
 div {
   display: flex;
   justify-content: center;
@@ -51,7 +56,15 @@ form > * {
   display: block;
 }
 
-/* #input-usage .v-input {
-  border: 1px dashed rgba(0, 0, 0, 0.4);
-} */
+input{
+  border: 1px rgba(73, 226, 193, 0.4);  
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+button{
+  align-items: flex-end
+}
+
+
 </style>
