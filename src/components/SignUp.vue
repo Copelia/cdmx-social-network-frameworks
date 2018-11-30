@@ -1,12 +1,14 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-">
+      <div class="col- text-center">
         <form>
           <h2>Registra una cuenta</h2>
           <input type="email" v-model="email" placeholder="Tu correo">
           <input type="password" v-model="password" placeholder="Tu contraseña">
-          <button type="button" class="btn btn-dark" @click="signUp" color="warning">Regístrame!</button>
+          <div class="col-12 text-center">
+          <button type="button" class="btn btn-warning" @click="signUp" color="warning">Registrarme</button>
+          </div>
           <p>Ya tienes una cuenta? <router-link to="/login">Inicia sesión</router-link></p>
         </form>
       </div>

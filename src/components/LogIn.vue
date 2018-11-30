@@ -1,12 +1,16 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-">
+      <div class="col- text-center">
         <form @submit.prevent="login">
-          <h3>Ingresa a tu cuenta</h3>
+          <h2>Ingresa a tu cuenta</h2>
           <input type="email" v-model="email" placeholder="Tu correo">
           <input type="password" v-model="password" placeholder="Tu contraseña">
-          <button class="btn btn-warning">Adelante!</button>
+          <!-- <div class="row"> -->
+          <div class="col-12 text-center">
+          <button class="btn btn-success">Inicia sesión</button>
+          </div>
+          <!-- </div> -->
           <p>No tienes cuenta? <router-link to="/signup">Regístrate</router-link></p>
         </form>
       </div>
@@ -43,6 +47,7 @@ export default {
 .container {
   background-image: url('../assets/bicycle.png');
   background-position: initial;
+  background-repeat: no-repeat;
   height: 100vh;
 }
 div {
