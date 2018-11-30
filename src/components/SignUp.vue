@@ -44,6 +44,7 @@ export default {
 .container {
   background-image: url('../assets/bicycle.png');
   background-position: initial;
+  background-repeat: no-repeat;
   height: 100vh;
 }
   div{
